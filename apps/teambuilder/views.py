@@ -4,7 +4,7 @@ from ..logreg.models import User
 
 # Create your views here.
 def index(request):
-    user = User.objects.get(id=request.session["id"])
+    user = User.objects.get(id=request.session["user_id"])
     return render(request, '/teambuilder/index', {"user":user})
 
 def stat_ajax(request):
