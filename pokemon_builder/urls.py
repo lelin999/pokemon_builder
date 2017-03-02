@@ -17,5 +17,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(r'^', include('apps.logreg.urls', namespace='login')),
-    url(r'^teambuilder', include('apps.teambuilder.urls', namespace='teambuilder')),
+    url(r'^teambuilder/', include('apps.teambuilder.urls', namespace='teambuilder')),
 ]
