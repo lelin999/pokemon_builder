@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Intro</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href={%static "logreg/css/prof.css"%}>
+    </head>
+    <body>
+        <div class="professor">
+            <div class="speech" style="background-image: url('{% static "logreg/img/speechbox.png"%}')";>
+                <p>Hello there! Welcome to the world of Pokémon! My name is Oak! People call me the Pokémon Prof! This world is inhabited by creatures called Pokémon! For some people, Pokémon are pets. Other use them for fights. Myself… I study Pokémon as a profession. First, what is your name?</p>
+            </div>
+            <img src={% static 'logreg/img/prof.png'%} />
+        </div>
+        <div class="login-area">
+            {% if messages %}
+            <div class="flash-messages">
+                <ul>
+                    {% for msg in messages %}
+                    {% if msg.tags == "warning" %}
+                    <li class="error-messages">{{msg}}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <form action='/login' method='post'>
+                {% csrf_token %}
+                <h2>Please log in:</h2>
+                <p><label for="username">Username: <input type="text" name="username"></label></p>
+                <p><label for="password">Password: <input type="password" name="password"></label></p>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+        <div class="register-area">
+            {% if messages %}
+            <div class="flash-messages">
+                <ul>
+                    {% for msg in messages %}
+                    {% if msg.tags == "error" %}
+                    <li class="error-messages">{{msg}}</li>
+                    {% elif msg.tags == "success" %}
+                    <li class="success">{{msg}}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <form action='/register' method='post'>
+                {% csrf_token %}
+                <h2>Please register:</h2>
+                <p><label for="username">Username: <input type="text" name="username"></label></p>
+                <p><label for="pword">Password: <input type="password" name="pword"></label></p>
+                <p><label for="c-pword">Confirm Password: <input type="password" name="c-pword"></label></p>
+                <input type="submit" value="Register">
+            </form>
+        </div>
+    </body>
+</html>

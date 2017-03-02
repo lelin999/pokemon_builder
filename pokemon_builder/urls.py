@@ -16,6 +16,6 @@ Including another URLconf
 from django.conf.urls import url, include
 
 urlpatterns = [
-    url(r'^', include('apps.login.urls', namespace='login')),
+    url(r'^', include('apps.logreg.urls', namespace='login')),
     url(r'^teambuilder', include('apps.teambuilder.urls', namespace='teambuilder')),
 ]

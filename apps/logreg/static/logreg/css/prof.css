@@ -1,0 +1,35 @@
+body{
+    white-space: nowrap;
+}
+.login-area{
+    width: 25%;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: top;
+}
+.register-area{
+    width: 30%;
+    white-space: normal;
+    display: inline-block;
+}
+.error-messages{
+    color: red;
+}
+.success{
+    color: green;
+}
+.professor img {
+    display: inline-block;
+    margin-left: 10px;
+}
+.speech{
+    white-space: normal;
+    vertical-align: top;
+    display: inline-block;
+    width: 300px;
+    word-wrap: break-word;
+    margin-left: 10px;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    padding: 15px 20px 25px 20px;
+}

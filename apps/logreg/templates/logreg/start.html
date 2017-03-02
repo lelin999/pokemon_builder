@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Start</title>
+        <link rel="stylesheet" type="text/css" href={%static "logreg/css/start.css"%}>
+    </head>
+    <body style="background-image: url('{% static "logreg/img/red.png"%}')";>
+        <div class="tooltip">
+            <a href="/prof"><img src={%static "logreg/img/pokeball-1.gif-c200"%} /></a>
+            <span class="tooltiptext">Press to start</span>
+        </div>
+        <audio autoplay loop>
+            <source src={% static "logreg/mp3/opening.mp3"%} />
+        </audio>
+    </body>
+</html>
