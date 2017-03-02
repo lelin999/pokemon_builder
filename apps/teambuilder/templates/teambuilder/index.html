@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Team Builder</title>
+    {%load staticfiles%}
+    <script src="{%static 'teambuilder/js/jquery.min.js'%}"></script>
+    <script src="{%static 'teambuilder/js/teambuilder.js'%}"></script>
+  </head>
+  <body>
+    <h1>Welcome, {{user.username}}</h1>
+    <a href='logout'>Log out</a>
+    <ul class='errors'>
+    </ul>
+    <div class='stats'>
+      <table>
+        <tbody>
+          <tr>
+            <td>Pokemon:</td>
+            <td id='numname'>Click a Pokemon to view stats...</td>
+          </tr>
+          <tr>
+            <td>Types:</td>
+            <td id='types'></td>
+          </tr>
+          <tr>
+            <td>Stats:</td>
+            <td>
+              <form action='/teambuilder/stat_ajax/' method='POST' id='statform'>
+                {%csrf_token%}
+                <input type='hidden' name='id' id='id' value="">
+                Nature: <select name='nature' id='naturelist'>
+                  <option value=''>Select a nature...</option>
+                </select>
+                <table>
+                  <thead>
+                    <th>Stat</th>
+                    <th>Base</th>
+                    <th>IV</th>
+                    <th>EV</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>HP:</td>
+                      <td id='base_hp'></td>
+                      <td><input type='text' name='hp_iv' value='31'></td>
+                      <td><input type='text' name='hp_ev' value='0'></td>
+                    </tr>
+                    <tr>
+                      <td>Attack:</td>
+                      <td id='base_atk'></td>
+                      <td><input type='text' name='atk_iv' value='31'></td>
+                      <td><input type='text' name='atk_ev' value='0'></td>
+                    </tr>
+                    <tr>
+                      <td>Defense:</td>
+                      <td id='base_def'></td>
+                      <td><input type='text' name='def_iv' value='31'></td>
+                      <td><input type='text' name='def_ev' value='0'></td>
+                    </tr>
+                    <tr>
+                      <td>Special Attack</td>
+                      <td id='base_spa'></td>
+                      <td><input type='text' name='spa_iv' value='31'></td>
+                      <td><input type='text' name='spa_ev' value='0'></td>
+                    </tr>
+                    <tr>
+                      <td>Special Defense</td>
+                      <td id='base_spd'></td>
+                      <td><input type='text' name='spd_iv' value='31'></td>
+                      <td><input type='text' name='spd_ev' value='0'></td>
+                    </tr>
+                    <tr>
+                      <td>Speed</td>
+                      <td id='base_spe'></td>
+                      <td><input type='text' name='spe_iv' value='31'></td>
+                      <td><input type='text' name='spe_ev' value='0'></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type='submit' value='Calculate' id='calc'>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class='dex'>
+    </div>
+  </body>
+</html>
