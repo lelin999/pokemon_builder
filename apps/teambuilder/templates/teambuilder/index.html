@@ -9,7 +9,12 @@
   </head>
   <body>
     <h1>Welcome, {{user.username}}</h1>
-    <a href='logout'>Log out</a>
+    <div class="logged-in">
+        <form action='/logout' method='post'>
+            {% csrf_token %}
+            <input type="submit" value="Log out" class="button">
+        </form>
+    </div>
     <ul class='errors'>
     </ul>
     <div class='stats'>

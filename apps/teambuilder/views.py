@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from ..login.models import User
+from ..logreg.models import User
 
 # Create your views here.
 def index(request):
