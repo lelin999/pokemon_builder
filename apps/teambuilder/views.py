@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from ..logreg.models import User
-
+from django.contrib import messages
 # Create your views here.
 def index(request):
-    user = User.objects.get(id=request.session["id"])
-    return render(request, '/teambuilder/index', {"user":user})
+    if 'user_id' not in request.session or request.session['user_id'] == -1:
+        print "Nuh-uh. You can't see this page yet."
+        request.session['user_id'] = -1
+        messages.warning(request, 'Please sign-in or register.')
+        return redirect('/prof')
+    else:
+        user = User.objects.get(id=request.session["user_id"])
+        return render(request, 'teambuilder/index.html', {"user":user})
 
 def stat_ajax(request):
     errors = []
