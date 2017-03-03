@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect
 from .models import User, Pokemon, Roster
 from django.contrib import messages
 # Create your views here.
@@ -6,9 +6,6 @@ def start(request):
     return render(request, 'logreg/start.html')
 
 def prof(request):
-    if 'user_id' in request.session:
-        if request.session['user_id'] != -1:
-            return redirect('/roster')
     if 'user_id' not in request.session:
         request.session['user_id'] = -1
     return render(request, 'logreg/login.html')
@@ -54,7 +51,10 @@ def success(request):
         return redirect('/prof')
     else:
         print "**WELCOME TO THE JUNGLE**"
-        return redirect('/teambuilder')
+        context = {
+            'user': User.objects.get(id=request.session['user_id']),
+        }
+        return render(request, 'teambuilder/index.html', context)
 
 def logout(request):
     if request.method == "GET":

@@ -33,6 +33,14 @@ def stat_ajax(request):
             "spd_ev":request.POST["spd_ev"],
             "spe_iv":request.POST["spe_iv"],
             "spe_ev":request.POST["spe_ev"],
+            "base": {
+                "hp":request.POST["hp_base"],
+                "atk":request.POST["atk_base"],
+                "def":request.POST["def_base"],
+                "spa":request.POST["spa_base"],
+                "spd":request.POST["spd_base"],
+                "spe":request.POST["spe_base"]
+            }
         }
         if request.POST["id"] == "":
             errors.append("Please select a Pokemon!")
